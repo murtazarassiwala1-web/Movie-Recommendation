@@ -40,7 +40,7 @@ An end-to-end, content-based movie recommendation system built with Python, Scik
 
 ### Prerequisites
 * Python 3.8 or higher
-* A free API Key from [TMDB](https://www.themoviedb.org/settings/api)
+* A API Key from [TMDB](https://www.themoviedb.org/settings/api)
 
 ### Installation
 
