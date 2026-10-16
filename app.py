@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import joblib
 import pandas as pd
 import requests
+from functools import lru_cache
 
 app = Flask(__name__)
 
@@ -22,7 +23,13 @@ def fetch_poster(movie_id):
         return "https://image.tmdb.org/t/p/w500/" + poster_path
     else:
         return "https://via.placeholder.com/500x750?text=No+Poster"
-
+# Yeh cache tag function ke theek upar lagana zaroori hai
+@lru_cache(maxsize=50)
+def recommend(movie):
+    # Aapka similarity.pkl se movies nikalne ka code
+    # aur TMDB API se posters fetch karne ka code yahan hoga
+    # ...
+    return recommended_movies, recommended_posters
 def recommend(movie):
     try:
         movie_index = movies[movies['title'] == movie].index[0]
