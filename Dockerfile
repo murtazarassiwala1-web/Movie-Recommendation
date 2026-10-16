@@ -16,7 +16,7 @@ EXPOSE 8501
 
 # 6. Container start hone par run hone wali command
 # Agar aap app.py ko Streamlit se chala rahe hain:
-CMD ["python", "app.py"]
+CMD gunicorn app:app --bind 0.0.0.0:10000
 #CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
 
 # Agar simple Flask script hai toh is line ko use karein aur upar wala CMD hata dein:
