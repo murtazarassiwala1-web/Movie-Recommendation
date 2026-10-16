@@ -64,3 +64,22 @@ listContainer.addEventListener('click', function(event) {
         
     }
 });
+
+// 1. Apne form aur spinner ko select karein
+const searchForm = document.querySelector('form'); 
+const loadingSpinner = document.getElementById('loading-spinner');
+
+// Agar pehle se koi movies dikh rahi hain, toh unka container bhi select kar lein
+const oldRecommendations = document.querySelector('.recommendations-container'); 
+
+// 2. Form submit hone par kya hoga?
+searchForm.addEventListener('submit', function() {
+    
+    // Spinner ko show karein
+    loadingSpinner.style.display = 'block';
+    
+    // (Optional) Purani movies ko hide kar dein taaki screen clean lage
+    if (oldRecommendations) {
+        oldRecommendations.style.display = 'none';
+    }
+});
