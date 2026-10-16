@@ -26,11 +26,6 @@ def fetch_poster(movie_id):
 # Yeh cache tag function ke theek upar lagana zaroori hai
 @lru_cache(maxsize=50)
 def recommend(movie):
-    # Aapka similarity.pkl se movies nikalne ka code
-    # aur TMDB API se posters fetch karne ka code yahan hoga
-    # ...
-    return recommended_movies, recommended_posters
-def recommend(movie):
     try:
         movie_index = movies[movies['title'] == movie].index[0]
         distances = similarity[movie_index]
