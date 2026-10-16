@@ -9,6 +9,56 @@
 
     <style>
 
+
+        /* */
+
+                .result{
+            /*background-color: rgb(134, 137, 139);*/
+            margin-top: 5px;
+            border-radius: 10px;
+            height: max-content;
+            padding-bottom: 10px;
+            padding-top: 5px;
+            max-height: 240px;
+            width: 100%;
+            overflow: hidden;
+        }
+        ul>li{
+            padding: 5px;
+        }
+        #search-container{
+            width: 50%;
+            height: 300px;
+            align-items: center;
+            margin: auto;
+        }
+        #search-box{
+            
+            width: 100%;
+            height: 40px;
+            border-radius: 15px;
+            border: none;
+            /*background-color: rgb(81, 85, 88);*/
+            padding-left: 20px;
+        }
+        .button{
+            position: absolute;
+            right: 1px;
+        }
+        #1{
+            display: flex;
+            align-items: center;
+        }
+/* Add this to your CSS */
+#movieList li {
+    display: none;
+}
+ 
+        /* */
+        /* */
+        /* */
+        
+
         /* Add a class like 'movie-poster' to your poster images */
 .movie-poster {
     border-radius: 10px;
@@ -65,49 +115,126 @@
     }
 }
         /*  */
-        /*  */
-        /*  */
-        /*  */
-
-        .result{
-            background-color: rgb(134, 137, 139);
-            margin-top: 5px;
-            border-radius: 10px;
-            height: max-content;
-            padding-bottom: 10px;
-            padding-top: 5px;
-        }
-        ul>li{
-            padding: 5px;
-        }
-        #search-container{
-            width: 50%;
-            height: 300px;
-            align-items: center;
-            margin: auto;
-        }
-        #search-box{
-
-            width: 100%;
-            height: 40px;
-            border-radius: 15px;
-            border: none;
-            background-color: rgb(81, 85, 88);
-            padding-left: 20px;
-        }
-        .button{
-            position: absolute;
-            right: 1px;
-        }
-        #1{
-            display: flex;
-            align-items: center;
-        }
-/* Add this to your CSS */
-#movieList li {
-    display: none;
+        /* 1. Gap kam karne ke liye (Movie cards ko upar laane ke liye) */
+.recommendations-container {
+    /* Agar pehle bahut zyada margin tha, toh usko kam karke negative margin use kar sakte hain */
+    margin-top: 20px !important; 
+    padding-top: 0;
+    
+    /* Jab page load ho toh cards smoothly neeche se upar aayenge */
+    animation: fadeInUp 0.8s ease-out forwards;
 }
- 
+
+/* 2 & 3. Movie Card (Poster) par Green Border aur Shadow */
+.movie-poster {
+    border-radius: 15px; /* Thode zyada gol kinare */
+    
+    /* Subtle neon green border and glowing shadow (Bina hover kiye default look) */
+    border: 2px solid rgba(120, 255, 214, 0.3); 
+    box-shadow: 0 10px 25px rgba(120, 255, 214, 0.15); 
+    
+    /* 4. Smooth Bounce Transition */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    width: 100%;
+}
+
+/* 4. Awesome Hover Animations (Jab mouse poster par jayega) */
+.movie-poster:hover {
+    /* Poster hawa mein uthega aur thoda bada hoga */
+    transform: translateY(-15px) scale(1.05);
+    
+    /* Green neon glow aur sharp ho jayega */
+    border-color: rgba(120, 255, 214, 0.9);
+    box-shadow: 0 20px 40px rgba(120, 255, 214, 0.5); 
+    
+    cursor: pointer;
+}
+
+#movieList{
+    max-width: 300px;
+}
+
+/* Card Entry Animation Keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}   
+        /*  */
+        /* 1. Cinematic Background Gradient */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* 2. Make the Main Title Pop with a Gradient Text Effect */
+h1 {
+    font-weight: 800;
+    font-size: 3rem;
+    background: -webkit-linear-gradient(#ffffff, #78ffd6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+}
+
+/* 3. Search Box Styling */
+#search-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#search-box::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#search-box:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #78ffd6;
+    box-shadow: 0 0 20px rgba(120, 255, 214, 0.4);
+}
+
+/* 4. Glassmorphism Dropdown List (Fixes the empty box issue) */
+#movieList {
+    background: rgba(20, 30, 48, 0.85); /* Dark transparent glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+#movieList li {
+    padding: 12px 20px;
+    color: #e0e0e0;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+#movieList li:last-child {
+    border-bottom: none;
+}
+
+/* Beautiful Hover effect on list items */
+#movieList li:hover {
+    background: rgba(120, 255, 214, 0.2);
+    color: white;
+    padding-left: 25px; /* Slight slide animation on hover */
+}
+        /*  */
+        /*  */
+
+
     </style>
 
 
@@ -124,7 +251,7 @@
                 <div id="1" class="input-group mb-3" style="position: relative;">
                     <div id="search-container">
                     
-                        <input type="text" name="movie_name" id="search-box" onkeypress="text()">
+                        <input type="text" autocomplete="off" placeholder="Search Movies" name="movie_name" id="search-box" onkeypress="text()">
 
                         <div class="result">
                         
@@ -156,12 +283,12 @@
 
     <!-- Recommendations Grid -->
     {% if recommendations %}
-    <div class="row mt-5">
+    <div class="row mt-1">
         <h3 class="mb-4 text-center">Top 5 Recommendations</h3>
         <!-- Loop through the zipped names and posters -->
         {% for name, poster in recommendations %}
         <div class="col-md-2 offset-md-0 col-sm-6 offset-sm-3 mb-4 mx-auto">
-            <div class="card bg-secondary text-white h-100">
+            <div class="movie-poster card bg-secondary text-white h-100">
                 <img src="{{ poster }}" class="card-img-top" alt="{{ name }}">
                 <div class="card-body text-center p-2">
                     <h6 class="card-title mb-0">{{ name }}</h6>
